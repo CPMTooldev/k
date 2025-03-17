@@ -13,8 +13,8 @@ from pystyle import Colors, Colorate
 
 from cpmtooldev import CPMTooldev
 
-__CHANNEL_USERNAME__ = "BaldanShopChannel"
-__GROUP_USERNAME__   = "BaldanShopChat"
+__CHANNEL_USERNAME__ = "ᴋᴀʏᴢᴇɴꜱʜᴏᴘᴄʜᴀɴɴᴇʟ"
+__GROUP_USERNAME__   = "ᴋᴀʏᴢᴇɴꜱʜᴏᴘᴄʜᴀᴛ"
 
 def signal_handler(sig, frame):
     print("\n Bye Bye...")
@@ -48,9 +48,9 @@ def banner(console):
     colorful_text = gradient_text(brand_name, colors)
     console.print(colorful_text)
     print(Colorate.Horizontal(Colors.rainbow, '============================================================'))
-    print(Colorate.Horizontal(Colors.rainbow, '\t         𝐏𝐋𝐄𝐀𝐒𝐄 𝐋𝐎𝐆𝐎𝐔𝐓 𝐅𝐑𝐎𝐌 𝐂𝐏𝐌 𝐁𝐄𝐅𝐎𝐑𝐄 𝐔𝐒𝐈𝐍𝐆 𝐓𝐇𝐈𝐒 𝐓𝐎𝐎𝐋'))
-    print(Colorate.Horizontal(Colors.rainbow, '    𝐒𝐇𝐀𝐑𝐈𝐍𝐆 𝐓𝐇𝐄 𝐀𝐂𝐂𝐄𝐒𝐒 𝐊𝐄𝐘 𝐈𝐒 𝐍𝐎𝐓 𝐀𝐋𝐋𝐎𝐖𝐄𝐃 𝐀𝐍𝐃 𝐖𝐈𝐋𝐋 𝐁𝐄 𝐁𝐋𝐎𝐂𝐊𝐄𝐃'))
-    print(Colorate.Horizontal(Colors.rainbow, f' ‌           𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦: @{__CHANNEL_USERNAME__} 𝐎𝐫 @{__GROUP_USERNAME__}'))
+    print(Colorate.Horizontal(Colors.rainbow, '\t         𝗣𝗟𝗘𝗔𝗦𝗘 𝗟𝗢𝗚 𝗢𝗨𝗧 𝗙𝗥𝗢𝗠 𝗖𝗣𝗠 𝗕𝗘𝗙𝗢𝗥𝗘 𝗨𝗦𝗜𝗡𝗚 𝗧𝗛𝗜𝗦 𝗧𝗢𝗢𝗟'))
+    print(Colorate.Horizontal(Colors.rainbow, '    𝗦𝗛𝗔𝗥𝗜𝗡𝗚 𝗧𝗛𝗘 𝗔𝗖𝗖𝗘𝗦 𝗞𝗘𝗬 𝗜𝗦 𝗡𝗢𝗧 𝗔𝗟𝗟𝗢𝗪𝗘𝗗 𝗔𝗡𝗗 𝗜𝗧 𝗪𝗜𝗟𝗟 𝗕𝗘 𝗕𝗟𝗢𝗖𝗞𝗘𝗗'))
+    print(Colorate.Horizontal(Colors.rainbow, f' ‌           ᴛᴇʟᴇɢʀᴀᴍ: @{__CHANNEL_USERNAME__} 𝐎𝐫 @{__GROUP_USERNAME__}'))
     print(Colorate.Horizontal(Colors.rainbow, '============================================================'))
 
 def load_player_data(cpm):
@@ -59,7 +59,7 @@ def load_player_data(cpm):
         data = response.get('data')
         if 'floats' in data and 'localID' in data and 'money' in data and 'coin' in data:
         
-            print(Colorate.Horizontal(Colors.rainbow, '==========[ PLAYER DETAILS ]=========='))
+            print(Colorate.Horizontal(Colors.rainbow, '==========[ ᴘʟᴀʏᴇʀ ᴅᴇᴛᴀɪʟꜱ ]=========='))
             
             print(Colorate.Horizontal(Colors.rainbow, f'Name   : {(data.get("Name") if "Name" in data else "UNDEFINED")}.'))
                 
@@ -81,7 +81,7 @@ def load_key_data(cpm):
 
     data = cpm.get_key_data()
     
-    print(Colorate.Horizontal(Colors.rainbow, '========[ ACCESS KEY DETAILS ]========'))
+    print(Colorate.Horizontal(Colors.rainbow, '========[ 𝘼𝘾𝘾𝙀𝙎𝙎 𝙆𝙀𝙔 𝘿𝙀𝙏𝘼𝙄𝙇𝙎 ]========'))
     
     print(Colorate.Horizontal(Colors.rainbow, f'Access Key : {data.get("access_key")}.'))
     
@@ -102,11 +102,11 @@ def prompt_valid_value(content, tag, password=False):
 def load_client_details():
     response = requests.get("http://ip-api.com/json")
     data = response.json()
-    print(Colorate.Horizontal(Colors.rainbow, '=============[ 𝐋𝐎𝐂𝐀𝐓𝐈𝐎𝐍 ]============='))
+    print(Colorate.Horizontal(Colors.rainbow, '=============[ 𝙇𝙊𝘾𝘼𝙏𝙄𝙊𝙉 ]============='))
     print(Colorate.Horizontal(Colors.rainbow, f'Ip Address : {data.get("query")}.'))
     print(Colorate.Horizontal(Colors.rainbow, f'Location   : {data.get("city")} {data.get("regionName")} {data.get("countryCode")}.'))
     print(Colorate.Horizontal(Colors.rainbow, f'Country    : {data.get("country")} {data.get("zip")}.'))
-    print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐌𝐄𝐍𝐔 ]==============='))
+    print(Colorate.Horizontal(Colors.rainbow, '===============[ ＭＥＮＵ ]==============='))
 
 def interpolate_color(start_color, end_color, fraction):
     start_rgb = tuple(int(start_color[i:i+2], 16) for i in (1, 3, 5))
@@ -196,11 +196,11 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{31}: Custom Car Brake         2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
             
-            print(Colorate.Horizontal(Colors.rainbow, '===============[ ʙᴀʟᴅᴀɴ ]==============='))
+            print(Colorate.Horizontal(Colors.rainbow, '===============[ ᴋᴀʏᴢᴇɴɴ ]==============='))
             
             service = IntPrompt.ask(f"[bold][?] Select a Service [red][1-{choices[-1]} or 0][/red][/bold]", choices=choices, show_choices=False)
             
-            print(Colorate.Horizontal(Colors.rainbow, '===============[ ʙᴀʟᴅᴀɴ ]==============='))
+            print(Colorate.Horizontal(Colors.rainbow, '===============[ ᴋᴀʏᴢᴇɴɴ ]==============='))
             
             if service == 0: # Exit
                 print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channel: @{__CHANNEL_USERNAME__}.'))
