@@ -210,12 +210,12 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{32}: Remove Rear Bumper       2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{33}: Remove Front Bumper      2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
-            
-            console.print("[bold][red]======[/red]=ᴋᴀʏᴢᴇɴɴ=[red]======[/red][/bold]")
+
+            print(Colorate.Horizontal(Colors.rainbow, '===============[ ᴋᴀʏᴢᴇɴɴ ]==============='))
             
             service = IntPrompt.ask(f"[bold][?] Select a Service [red][1-{choices[-1]} or 0][/red][/bold]", choices=choices, show_choices=False)
             
-            console.print("[bold][red]======[/red]=ᴋᴀʏᴢᴇɴɴ=[red]======[/red][/bold]")
+            print(Colorate.Horizontal(Colors.rainbow, '===============[ ᴋᴀʏᴢᴇɴɴ ]==============='))
             
             if service == 0: # Exit
                 print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channel: @{__CHANNEL_USERNAME__}.'))
