@@ -167,7 +167,7 @@ if __name__ == "__main__":
         else:
             print(Colorate.Horizontal(Colors.rainbow, 'SUCCESSFUL.'))
             sleep(2)
-        while True:
+           while True:
             banner(console)
             load_player_data(cpm)
             load_key_data(cpm)
