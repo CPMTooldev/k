@@ -47,11 +47,11 @@ def banner(console):
     ]
     colorful_text = gradient_text(brand_name, colors)
     console.print(colorful_text)
-    console.print("[bold][red]========[/red][===========================================][red]========[/red][/bold]")
+    console.print("[bold][red]========[/red]===========================================[red]========[/red][/bold]")
     print(Colorate.Horizontal(Colors.rainbow, '\t         𝗣𝗟𝗘𝗔𝗦𝗘 𝗟𝗢𝗚 𝗢𝗨𝗧 𝗙𝗥𝗢𝗠 𝗖𝗣𝗠 𝗕𝗘𝗙𝗢𝗥𝗘 𝗨𝗦𝗜𝗡𝗚 𝗧𝗛𝗜𝗦 𝗧𝗢𝗢𝗟'))
     print(Colorate.Horizontal(Colors.rainbow, '    𝗦𝗛𝗔𝗥𝗜𝗡𝗚 𝗧𝗛𝗘 𝗔𝗖𝗖𝗘𝗦 𝗞𝗘𝗬 𝗜𝗦 𝗡𝗢𝗧 𝗔𝗟𝗟𝗢𝗪𝗘𝗗 𝗔𝗡𝗗 𝗜𝗧 𝗪𝗜𝗟𝗟 𝗕𝗘 𝗕𝗟𝗢𝗖𝗞𝗘𝗗'))
     print(Colorate.Horizontal(Colors.rainbow, f' ‌           ᴛᴇʟᴇɢʀᴀᴍ: @{__CHANNEL_USERNAME__} 𝐎𝐫 @{__GROUP_USERNAME__}'))
-    console.print("[bold][red]========[/red][===========================================][red]========[/red][/bold]")  
+    console.print("[bold][red]========[/red]===========================================[red]========[/red][/bold]")  
     
 def load_player_data(cpm):
     response = cpm.get_player_data()
