@@ -94,7 +94,7 @@ def load_key_data(cpm):
     
     console.print("[bold][red]========[/red][ 𝘼𝘾𝘾𝙀𝙎𝙎 𝙆𝙀𝙔 𝘿𝙀𝙏𝘼𝙄𝙇𝙎 ][red]========[/red][/bold]")
     
-    console.print(f"[bold][pink]Access Key : {data.get('access_key')}[/pink][/bold]")
+    console.print(f"[bold][black]Access Key : {data.get('access_key')}[/black][/bold]")
     
     print(Colorate.Horizontal(Colors.rainbow, f'Telegram ID: {data.get("telegram_id")}.'))
     
