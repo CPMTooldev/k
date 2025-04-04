@@ -61,7 +61,7 @@ def load_player_data(cpm):
 
         if all(key in data for key in ['floats', 'localID', 'money', 'coin']):
             
-            print(Colorate.Horizontal(Colors.rainbow, '==========[ ᴘʟᴀʏᴇʀ ᴅᴇᴛᴀɪʟꜱ ]=========='))
+            console.print("[bold][red]========[/red][ ᴘʟᴀʏᴇʀ ᴅᴇᴛᴀɪʟꜱ ][red]========[/red][/bold]")
             
             print(Colorate.Horizontal(Colors.rainbow, f'Name   : {data.get("Name", "UNDEFINED")}.'))
             print(Colorate.Horizontal(Colors.rainbow, f'LocalID: {data.get("localID")}.'))
