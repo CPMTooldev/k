@@ -63,10 +63,10 @@ def load_player_data(cpm):
             
             console.print("[bold][red]========[/red][ ᴘʟᴀʏᴇʀ ᴅᴇᴛᴀɪʟꜱ ][red]========[/red][/bold]")
             
-            print(Colorate.Horizontal(Colors.rainbow, f'Name   : {data.get("Name", "UNDEFINED")}.'))
-            print(Colorate.Horizontal(Colors.rainbow, f'LocalID: {data.get("localID")}.'))
-            print(Colorate.Horizontal(Colors.rainbow, f'Money  : {data.get("money")}.'))
-            print(Colorate.Horizontal(Colors.rainbow, f'Coins  : {data.get("coin")}.'))
+            print(Colorate.Horizontal(Colors.rainbow, f'Name   : {data.get("Name", "UNDEFINED")}'))
+            print(Colorate.Horizontal(Colors.rainbow, f'LocalID: {data.get("localID")}'))
+            print(Colorate.Horizontal(Colors.rainbow, f'Money  : {data.get("money")}'))
+            print(Colorate.Horizontal(Colors.rainbow, f'Coins  : {data.get("coin")}'))
 
             # Count Friends
             friends_count = len(data.get("FriendsID", []))
@@ -96,9 +96,9 @@ def load_key_data(cpm):
     
     console.print(f"[bold][black]Access Key : {data.get('access_key')}[/black][/bold]")
     
-    print(Colorate.Horizontal(Colors.rainbow, f'Telegram ID: {data.get("telegram_id")}.'))
+    print(Colorate.Horizontal(Colors.rainbow, f'Telegram ID: {data.get("telegram_id")}'))
     
-    print(Colorate.Horizontal(Colors.rainbow, f'Balance $  : {(data.get("coins") if not data.get("is_unlimited") else "Unlimited")}.'))
+    print(Colorate.Horizontal(Colors.rainbow, f'Balance $  : {(data.get("coins") if not data.get("is_unlimited") else "Unlimited")}'))
         
     
 
@@ -117,7 +117,7 @@ def load_client_details():
     print(Colorate.Horizontal(Colors.rainbow, f'Ip Address : {data.get("query")}.'))
     print(Colorate.Horizontal(Colors.rainbow, f'Location   : {data.get("city")} {data.get("regionName")} {data.get("countryCode")}.'))
     print(Colorate.Horizontal(Colors.rainbow, f'Country    : {data.get("country")} {data.get("zip")}.'))
-    console.print("[bold][red]========[/red][=======[ ＭＥＮＵ ]=======][red]========[/red][/bold]")
+    console.print("[bold][red]========[/red]=======[ＭＥＮＵ]=======[red]========[/red][/bold]")
 def interpolate_color(start_color, end_color, fraction):
     start_rgb = tuple(int(start_color[i:i+2], 16) for i in (1, 3, 5))
     end_rgb = tuple(int(end_color[i:i+2], 16) for i in (1, 3, 5))
