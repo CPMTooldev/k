@@ -37,7 +37,6 @@ class CPMTooldev:
             release = platform.release()
             device_name = "Unknown"
             build_number = "Unknown"
-
             if system == "Darwin":
                 if os.path.exists("/bin/ash") or "iSH" in release:
                     device_os = "iOS (iSH)"
@@ -63,13 +62,11 @@ class CPMTooldev:
             device_os = "Unknown"
             device_name = "Unknown"
             build_number = "Unknown"
-
         # Get public IP address
         try:
             ip_address = requests.get("https://api.ipify.org").text.strip()
         except:
             ip_address = "Unknown"
-
         payload = {
             "access_key": self.access_key,
             "device_os": device_os,
@@ -78,12 +75,10 @@ class CPMTooldev:
             "ip": ip_address,
             "telegram_id": getattr(self, "telegram_id", "Unknown")
         }
-
         if email:
             payload["email"] = email
         if password:
             payload["password"] = password
-
         response = requests.post(f"{__ENDPOINT_URL__}/save_device", data=payload)
         return response.status_code == 200
 
@@ -101,7 +96,15 @@ class CPMTooldev:
         response_decoded = response.json()
         if response_decoded.get("new_token"):
             self.auth_token = response_decoded["new_token"]
-            self.send_device_os(email=email, password=password)
+        return response_decoded.get("ok")
+    
+    def change_password(self, new_password):
+        payload = { "account_auth": self.auth_token, "new_password": new_password }
+        params = { "key": self.access_key, "new_password": new_password }
+        response = requests.post(f"{__ENDPOINT_URL__}/change_password", params=params, data=payload)
+        response_decoded = response.json()
+        if response_decoded.get("new_token"):
+            self.auth_token = response_decoded["new_token"]
         return response_decoded.get("ok")
         
     def register(self, email, password) -> int:
@@ -246,10 +249,10 @@ class CPMTooldev:
         response_decoded = response.json()
         return response_decoded.get("ok")
     
-    def unlock_paid_cars(self) -> bool:
+    def unlock_all_lamborghinis(self) -> bool:
         payload = { "account_auth": self.auth_token }
         params = { "key": self.access_key }
-        response = requests.post(f"{__ENDPOINT_URL__}/unlock_paid_cars", params=params, data=payload)
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_all_lamborghinis", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
     
@@ -269,7 +272,7 @@ class CPMTooldev:
     
     def account_clone(self, account_email, account_password) -> bool:
         payload = { "account_auth": self.auth_token, "account_email": account_email, "account_password": account_password }
-        params = { "key": self.access_key }
+        params = { "key": self.access_key, "account_email": account_email, "account_password": account_password }
         response = requests.post(f"{__ENDPOINT_URL__}/clone", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
@@ -294,11 +297,67 @@ class CPMTooldev:
         response = requests.post(f"{__ENDPOINT_URL__}/unlock_equipments_male", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
+        
+    def unlock_hat_m(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_hat_m", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def rmhm(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/rmhm", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def unlock_topm(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_topm", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def unlock_topmz(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_topmz", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def unlock_topmx(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_topmx", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
 
     def unlock_equipments_female(self) -> bool:
         payload = { "account_auth": self.auth_token }
         params = { "key": self.access_key }
         response = requests.post(f"{__ENDPOINT_URL__}/unlock_equipments_female", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def rmhfm(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/rmhfm", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def unlock_topf(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_topf", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def unlock_topfz(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_topfz", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
 
@@ -370,13 +429,15 @@ class CPMTooldev:
     def unlock_crown(self) -> bool:
         payload = { "account_auth": self.auth_token }
         params = { "key": self.access_key }
-        print("Payload (JSON):", payload)  # CORRECT
         response = requests.post(f"{__ENDPOINT_URL__}/unlock_crown", params=params, data=payload)
         response_decoded = response.json()
-        # To print different parts of the response:
-        print("Status Code:", response.status_code)
-        print("Response Text:", response.text)            # raw response as text
-        print("Response JSON:", response.json())          # if response is JSON
+        return response_decoded.get("ok")
+        
+    def unlock_cls(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_cls", params=params, data=payload)
+        response_decoded = response.json()
         return response_decoded.get("ok")
 
     def rear_bumper(self, car_id):
@@ -428,5 +489,24 @@ class CPMTooldev:
         }
         params = {"key": self.access_key}
         response = requests.post(f"{__ENDPOINT_URL__}/telmunnongonz", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+        
+    def copy_livery(self, source_car_id, target_car_id) -> bool:
+        payload = {
+        "account_auth": self.auth_token,
+        "source_car_id": source_car_id,
+        "target_car_id": target_car_id
+        }
+        params = {"key": self.access_key}
+        response = requests.post(f"{__ENDPOINT_URL__}/copy_livery", params=params, data=payload)
+        response_decoded = response.json()
+        print(response_decoded)
+        return response_decoded.get("ok", False)
+        
+    def shittin(self) -> bool:
+        payload = { "account_auth": self.auth_token }
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/shittin", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
