@@ -38,7 +38,7 @@ def gradient_text(text, colors):
 
 def banner(console):
     os.system('cls' if os.name == 'nt' else 'clear')
-    brand_name = "Tool version is 0.3"
+    brand_name = "Tool version is 0.4"
     
     text = Text(brand_name, style="bold black")
     
@@ -50,33 +50,24 @@ def banner(console):
     
 def load_player_data(cpm):
     response = cpm.get_player_data()
-    
     if response.get('ok'):
         data = response.get('data')
-
-        if all(key in data for key in ['floats', 'localID', 'money', 'coin', "integers"]):
+        if 'floats' in data and 'localID' in data and 'money' in data and 'coin' in data:
             
             console.print("[bold][red]========[/red][ ᴘʟᴀʏᴇʀ ᴅᴇᴛᴀɪʟꜱ ][red]========[/red][/bold]")
             
             console.print(f"[bold white]   >> Name        : {data.get('Name', 'UNDEFINED')}[/bold white]")
             console.print(f"[bold white]   >> LocalID     : {data.get('localID', 'UNDEFINED')}[/bold white]")
             console.print(f"[bold white]   >> Moneys      : {data.get('money', 'UNDEFINED')}[/bold white]")
-            console.print(f"[bold white]   >> Coins       : {data.get('coin', 'UNDEFINED')}[/bold white]")
-            friends_count = len(data.get("FriendsID", []))
-            console.print(f"[bold white]   >> Friends     : {friends_count}[/bold white]")
-            # Count Cars (Checking if it's nested)
-            car_data = data.get("carIDnStatus", {}).get("carGeneratedIDs", [])
-            # Remove duplicates by converting the list to a set
-            unique_car_data = set(car_data)
-            car_count = len(unique_car_data)
-            console.print(f"[bold white]   >> Car Count   : {car_count}[/bold white]")
-       
+            console.print(f"[bold white]   >> Coins       : {data.get('coin', 'UNDEFINED')}[/bold white]")  # 'coin' is optional
+        
         else:
             console.print("[bold red] '! ERROR: new accounts must be signed-in to the game at least once (✘)[/bold red]")
             exit(1)
     else:
         console.print("[bold red] '! ERROR: seems like your login is not properly set (✘)[/bold red]")
         exit(1)
+
      
 
 def load_key_data(cpm):
@@ -161,7 +152,7 @@ if __name__ == "__main__":
             load_player_data(cpm)
             load_key_data(cpm)
             load_client_details()
-            choices = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49"]
+            choices = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53"]
             console.print("[bold yellow][bold white](01)[/bold white]: Increase Money                 [bold red]1.5K[/bold red][/bold yellow]")
             console.print("[bold yellow][bold white](02)[/bold white]: Increase Coins                 [bold red]1.5K[/bold red][/bold yellow]")
             console.print("[bold yellow][bold white](03)[/bold white]: King Rank                      [bold red]8K[/bold red][/bold yellow]")
@@ -210,6 +201,11 @@ if __name__ == "__main__":
             console.print("[bold yellow][bold white](46)[/bold white]: Unlock Clan Top 1 (FM)         [bold red]3K[/bold red][/bold yellow]")
             console.print("[bold yellow][bold white](47)[/bold white]: Unlock Clan Top 2 (FM)         [bold red]3K[/bold red][/bold yellow]")
             console.print("[bold yellow][bold white](48)[/bold white]: Unlock Mercedes Cls            [bold red]4K[/bold red][/bold yellow]")
+            console.print("[bold yellow][bold white](49)[/bold white]: Stance Camber                  [bold red]1K[/bold red][/bold yellow]")
+            console.print("[bold yellow][bold white](50)[/bold white]: Copy livery To Another Car     [bold red]3K[/bold red][/bold yellow]")
+            console.print("[bold yellow][bold white](51)[/bold white]: Copy Livery To Another Account [bold red]4K[/bold red][/bold yellow]")
+            console.print("[bold yellow][bold white](52)[/bold white]: Clone Car To Another Account   [bold red]3K[/bold red][/bold yellow]")
+            console.print("[bold yellow][bold white](53)[/bold white]: Golden Glow Headlight          [bold red]2K[/bold red][/bold yellow]")
             console.print("[bold yellow][bold white](0) [/bold white]: Exit From Tool [/bold yellow]")
             
             console.print("[bold red]===============[bold white][ ᴋᴀʏᴢᴇɴɴ ][/bold white]===============[/bold red]")
@@ -282,7 +278,7 @@ if __name__ == "__main__":
                 console.print("[bold yellow] '[?] Enter your new ID[/bold yellow]")
                 new_id = Prompt.ask("[?] ID")
                 console.print("[%] Saving your data: ", end=None)
-                if len(new_id) >= 0 and len(new_id) <= 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 and (' ' in new_id) == False:
+                if len(new_id) >= 8 and len(new_id) <= 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 and (' ' in new_id) == False:
                     if cpm.set_player_localid(new_id.upper()):
                         console.print("[bold yellow] 'SUCCESSFUL[/bold yellow]")
                         console.print("[bold yellow] '======================================[/bold yellow]")
@@ -739,18 +735,18 @@ if __name__ == "__main__":
                     console.print("[bold red]Please Try Again[/bold red]")
                     sleep(2)
                     continue
-            elif service == 75:  # /testin endpoint
-                console.print("[bold]ENTER CUSTOM FLOAT DATA[/bold]")
-                custom = IntPrompt.ask("[bold][?] VALUE (e.g. 1 or 0)[/bold]")     # This is the value
-                console.print(f"[bold red][%] Setting float key... [/bold red]", end=None)
-                if cpm.testin(custom):
+            elif service == 53: # headlight
+                console.print("[bold]ENTER CAR DETAILS![/bold]")
+                car_id = IntPrompt.ask("[bold][?] CAR ID [/bold]")                
+                console.print("[bold red][%] GIVING CHROME HEADLIGHT [/bold red]: ", end=None)
+                if cpm.headlight(car_id):
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
                     answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
                     if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
                     else: continue
                 else:
-                    console.print("[bold yellow]FAILED[/bold yellow]")
-                    console.print("[bold yellow]PLEASE TRY AGAIN[/bold yellow]")
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
                     sleep(2)
                     continue
             elif service == 34:
@@ -790,6 +786,76 @@ if __name__ == "__main__":
                 custom = IntPrompt.ask("[bold blue][?]INSERT BODYKIT ID[/bold blue]")                
                 console.print("[bold red][%] SAVING YOUR DATA [/bold red]: ", end=None)
                 if cpm.telmunnongonz(car_id, custom):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 50: # copy_livery
+                console.print("[bold]ENTER SOURCE CAR ID![/bold]")
+                source_car_id = IntPrompt.ask("[bold][?] CAR ID[/bold]")
+                console.print("[bold]ENTER TARGET CAR ID![/bold]")
+                target_car_id = IntPrompt.ask("[bold blue][?]INSERT TARGET CAR ID[/bold blue]")                
+                console.print("[bold red][%] COPYING LIVERY [/bold red]: ", end=None)
+                if cpm.copy_livery(source_car_id, target_car_id):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 51: # copy_livery
+                console.print("[bold]ENTER SOURCE CAR ID![/bold]")
+                source_car_id = IntPrompt.ask("[bold][?] CAR ID[/bold]")
+                console.print("[bold]ENTER TARGET ACCOUNT EMAIL![/bold]")
+                target_email = prompt_valid_value("[bold blue][?]INSERT TARGET ACCOUNT EMAIL[/bold blue]", "Email", password=False)
+                console.print("[bold]ENTER TARGET ACCOUNT PASSWORD![/bold]")
+                target_password = prompt_valid_value("[bold][?] TARGET ACCOUNT PASSWORD[/bold]", "Password", password=False)
+                console.print("[bold]ENTER TARGET CAR ID![/bold]")
+                target_car_id = IntPrompt.ask("[bold blue][?]INSERT TARGET CAR ID[/bold blue]")
+                console.print("[bold red][%] COPYING LIVERY [/bold red]: ", end=None)
+                if cpm.copy_car_to(source_car_id, target_email, target_password, target_car_id):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 52: # copy_livery
+                console.print("[bold]ENTER SOURCE CAR ID![/bold]")
+                source_car_id = IntPrompt.ask("[bold][?] CAR ID[/bold]")
+                console.print("[bold]ENTER TARGET ACCOUNT EMAIL![/bold]")
+                target_email = prompt_valid_value("[bold blue][?]INSERT TARGET ACCOUNT EMAIL[/bold blue]", "Email", password=False)
+                console.print("[bold]ENTER TARGET ACCOUNT PASSWORD![/bold]")
+                target_password = prompt_valid_value("[bold][?] TARGET ACCOUNT PASSWORD[/bold]", "Password", password=False)
+                console.print("[bold red][%] COPYING LIVERY [/bold red]: ", end=None)
+                if cpm.clone_car_to(source_car_id, target_email, target_password):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 49: # telmunnongonz
+                console.print("[bold]ENTER CAR DETAILS![/bold]")
+                car_id = IntPrompt.ask("[bold][?] CAR ID[/bold]")
+                console.print("[bold]ENTER VALUE FOR STANCE [/bold]")
+                custom = IntPrompt.ask("[bold blue][?]INSERT VALUE[/bold blue]")                
+                console.print("[bold red][%] SAVING YOUR DATA [/bold red]: ", end=None)
+                if cpm.incline(car_id, custom):
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
                     answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
                     if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
