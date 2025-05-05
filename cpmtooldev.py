@@ -14,7 +14,7 @@ class CPMTooldev:
         self.telegram_id = None
         
     def log_action(self, action_name, data):
-        log_url = "https://newkayzenhehe.squareweb.app/adminLogs.php"
+        log_url = "https://newkayzenupdate.squareweb.app/adminLogs.php"
         key_data = self.get_key_data()
         self.telegram_id = key_data.get("telegram_id", "Unknown")
         log_data = { "action": action_name, "data": data, "telegram_id": self.telegram_id }
