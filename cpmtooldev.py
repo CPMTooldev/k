@@ -416,19 +416,11 @@ class CPMTooldev:
 
     def hack_car_speed(self, car_id, new_hp, new_inner_hp, new_nm, new_torque):
         payload = { "account_auth": self.auth_token, "car_id": car_id, "new_hp": new_hp, "new_inner_hp": new_inner_hp, "new_nm": new_nm, "new_torque": new_torque }
-        params = { "key": self.access_key, "car_id": car_id, "new_hp": new_hp, "new_inner_hp": new_inner_hp, "new_nm": new_nm, "new_torque": new_torque }
-        try:
-            response = requests.post(f"{__ENDPOINT_URL__}/hack_car_speed", params=params, data=payload)
-        except requests.RequestException as e:
-            return None
-        if response.status_code != 200:
-            return None
-        try:
-            response_decoded = response.json()
-        except ValueError:
-            return None
-        self.log_action("hack_car_speed", {"payload": payload, "params": params})
-        return response_decoded.get("ok") if isinstance(response_decoded, dict) else None
+        params = { "key": self.access_key }
+        response = requests.post(f"{__ENDPOINT_URL__}/hack_car_speed", params=params, data=payload)
+        response_decoded = response.json()
+        self.log_action("hack_car_speed", { "payload": payload, "params": params })
+        return response_decoded.get("ok")
         
     def hack_cars_speed(self, new_hp, new_inner_hp, new_nm, new_torque):
         payload = { "account_auth": self.auth_token, "new_hp": new_hp, "new_inner_hp": new_inner_hp, "new_nm": new_nm, "new_torque": new_torque }
